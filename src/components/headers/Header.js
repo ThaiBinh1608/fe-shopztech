@@ -69,7 +69,7 @@ const Header = () => {
 
         <div
           onClick={() => dispatch(showCart())}
-          className="flex px-2 items-center cursor-pointer h-[100%]  border-x-4  border-violet-600  gap-1 "
+          className="flex p-2 items-center cursor-pointer h-[100%]  border-x-4  border-violet-600  gap-1 "
         >
           <FaCartArrowDown size={32}></FaCartArrowDown>
           <span className="font-semibold">{`${
