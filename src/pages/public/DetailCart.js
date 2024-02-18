@@ -45,7 +45,7 @@ const DetailCart = ({ location, navigate }) => {
         }
       });
     } else {
-      window.open(`/${path.CHECKOUT}`, "_blank");
+      navigate(`/${path.CHECKOUT}`);
     }
   };
 
