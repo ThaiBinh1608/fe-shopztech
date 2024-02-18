@@ -46,7 +46,7 @@ const Home = () => {
       </div>
       <div className="my-8 max-w-[1420px] m-auto">
         <div className="flex  text-[24px] gap-8 pb-4 mt-4 border-b-4  border-violet-700 font-semibold uppercase">
-          NEW ARRIVALS
+          Sản phẩm mới
         </div>
         <div className="pt-4  ">
           <div className="w-full">

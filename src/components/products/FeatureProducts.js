@@ -16,11 +16,16 @@ const FeatureProducts = () => {
   return (
     <div>
       <div className="flex text-[24px] gap-8 pb-4 my-4 border-b-4  border-violet-700 font-semibold uppercase">
-        Feature Products
+        Sản phẩm đề xuất
       </div>
       <div className="flex bg-slate-200 flex-wrap gap-2 py-[15px] ">
         {products?.map((el) => (
-          <ProductCard key={el._id} pid={el._id} image={el.thumb} {...el}></ProductCard>
+          <ProductCard
+            key={el._id}
+            pid={el._id}
+            image={el.thumb}
+            {...el}
+          ></ProductCard>
         ))}
       </div>
       <div className="grid grid-cols-4 grid-rows-2 gap-4">

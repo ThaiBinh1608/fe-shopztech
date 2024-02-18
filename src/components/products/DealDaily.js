@@ -14,7 +14,7 @@ import { getDealDaily } from "../../store/products/productSlice";
 
 const { AiFillStar, HiOutlineMenu } = icons;
 
-const DealDaily = ({ disPath }) => {
+const DealDaily = ({ disPath, navigate }) => {
   const [hour, setHour] = useState(0);
   const [minute, setMinute] = useState(0);
   const [second, setSecond] = useState(0);
@@ -94,7 +94,16 @@ const DealDaily = ({ disPath }) => {
         </span>
         <span className="font-bold text-[24px]">DEAL DAILY</span>
       </div>
-      <div className="w-full flex flex-col items-center">
+      <div
+        className="w-full flex flex-col items-center"
+        onClick={(e) =>
+          navigate(
+            `/${dealDaily?.data?.category?.toLowerCase()}/${
+              dealDaily?.data?._id
+            }/${dealDaily?.data?.title}`
+          )
+        }
+      >
         <img
           src={
             dealDaily?.data?.thumb ||
@@ -123,13 +132,13 @@ const DealDaily = ({ disPath }) => {
           <Countdown unit="Minute" number={minute}></Countdown>
           <Countdown unit="Seconds" number={second}></Countdown>
         </div>
-        <button
+        {/* <button
           type="button"
           className="flex gap-2 items-center justify-center w-full h-[52px] border-2 text-[16px] font-medium text-white bg-violet-500 border-violet-700 py-2 "
         >
           <HiOutlineMenu></HiOutlineMenu>
           <span>Option</span>
-        </button>
+        </button> */}
       </div>
     </div>
   );
