@@ -1,8 +1,10 @@
 import React, { memo, useEffect, useState } from "react";
 import { apiGetProducts } from "../../apis/product";
-import { Product, CustomSlider } from "..";
+import { Product, CustomSlider, Loading } from "..";
 import { getNewProducts } from "../../store/products/asyncActions";
 import { useDispatch, useSelector } from "react-redux";
+import { showModal } from "../../store/app/appSlice";
+import Swal from "sweetalert2";
 const tabs = [
   { id: 1, name: "Bán chạy" },
   { id: 2, name: "sản phẩm mới" },
@@ -16,10 +18,17 @@ const BestSellers = () => {
   const { newProducts } = useSelector((state) => state.products);
 
   const fetchProducts = async () => {
+    Swal.fire({
+      icon: "infor",
+      title: "Thông báo",
+      text: "Quá trình tải dữ liệu sẽ mất chút thời gian, xin vui lòng đợi một chút và tải lại trang",
+    });
+    dispatch(showModal({ isShowModal: true, modalChildren: <Loading /> }));
     const response = await apiGetProducts({ sort: "-sold" });
     if (response.success) {
       setBestSellers(response.products);
       setProducts(response.products);
+      dispatch(showModal({ isShowModal: false, modalChildren: null }));
     }
   };
   useEffect(() => {

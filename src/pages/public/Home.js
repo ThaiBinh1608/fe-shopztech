@@ -17,18 +17,7 @@ const Home = () => {
   const { newProducts } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.app);
   const { MdKeyboardArrowRight } = icons;
-  const dispatch = useDispatch();
 
-  const fetchProducts = async () => {
-    dispatch(showModal({ isShowModal: true, modalChildren: <Loading /> }));
-    const response = await apiGetProducts({ sort: "-totalRatings" });
-    if (response.success === true) {
-      dispatch(showModal({ isShowModal: false, modalChildren: null }));
-    }
-  };
-  useEffect(() => {
-    fetchProducts();
-  }, []);
   return (
     <div className="  bg-violet-100 px-4 py-10 ">
       <div className="max-w-[1420px] m-auto flex ">
