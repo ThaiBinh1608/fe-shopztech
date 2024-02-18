@@ -18,11 +18,11 @@ const BestSellers = () => {
   const { newProducts } = useSelector((state) => state.products);
 
   const fetchProducts = async () => {
-    Swal.fire({
-      icon: "infor",
-      title: "Thông báo",
-      text: "Quá trình tải dữ liệu sẽ mất chút thời gian, xin vui lòng đợi một chút và tải lại trang",
-    });
+    // Swal.fire({
+    //   icon: "infor",
+    //   title: "Thông báo",
+    //   text: "Quá trình tải dữ liệu sẽ mất chút thời gian, xin vui lòng đợi một chút và tải lại trang",
+    // });
     dispatch(showModal({ isShowModal: true, modalChildren: <Loading /> }));
     const response = await apiGetProducts({ sort: "-sold" });
     if (response.success) {
