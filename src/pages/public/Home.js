@@ -22,10 +22,10 @@ const Home = () => {
     <div className="  bg-violet-100 px-4 py-10 ">
       <div className="max-w-[1420px] m-auto flex ">
         <div className="flex flex-col gap-5 w-[35%] max-sm:w-[45%]  border">
-          <Sidebar></Sidebar>
+          <Sidebar style="flex-col"></Sidebar>
           <DealDaily></DealDaily>
         </div>
-        <div className="flex flex-col gap-5 pl-5 w-[65%] max-sm:w-[55%]  border">
+        <div className="flex flex-col gap-5 pl-5 w-[65%]   border">
           <Banner></Banner>
           <BestSellers></BestSellers>
         </div>

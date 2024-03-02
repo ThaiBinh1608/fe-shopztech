@@ -13,7 +13,7 @@ const Modal = ({ children }) => {
           })
         )
       }
-      className="absolute inset-0 z-50 bg-overlay flex items-center justify-center"
+      className="absolute inset-0 z-50 bg-overlay pt-[100px] flex flex-col items-center justify-start"
     >
       {children}
     </div>

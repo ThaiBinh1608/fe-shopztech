@@ -18,8 +18,8 @@ const History = ({ navigate, localtion }) => {
   const [orders, setOrders] = useState(null);
   const [counts, setCounts] = useState(0);
   const [params] = useSearchParams();
-  const q = watch("q");
-  const status = watch("status");
+  // const q = watch("q");
+  // const status = watch("status");
   const fetchOrder = async (params) => {
     const response = await apiGetUserOrders({
       ...params,

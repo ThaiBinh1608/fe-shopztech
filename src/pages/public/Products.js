@@ -12,6 +12,7 @@ import {
   InputSelect,
   Pagination,
   InputForm,
+  Sidebar,
 } from "../../components";
 import { apiGetProducts } from "../../apis";
 import { sorts } from "../../ultils/contants";
@@ -102,7 +103,7 @@ const Products = () => {
           {category !== ":category" ? category : "Products"}
         </h3>
         <Breadcrumb category={category} className=""></Breadcrumb>
-        <form className="w-full my-2  ">
+        <form className="w-full my-2 mx-4  ">
           <InputForm
             id="q"
             register={register}
@@ -112,7 +113,11 @@ const Products = () => {
           ></InputForm>
         </form>
       </div>
-      <div className="max-w-[1420px] m-auto rounded-xl  bg-violet-200  mt-2 p-4 flex justify-between items-center">
+      <div className="max-w-[1420px] m-auto rounded-xl  bg-violet-200  mt-2 p-4  flex justify-between items-center">
+        {/* <div className="mx-2">
+          <Sidebar></Sidebar>
+        </div> */}
+
         <div className="w-auto flex-auto flex  flex-col ">
           <span className="font-semibold text-lg mb-1">Filter by:</span>
           <div className="flex items-center gap-4">
@@ -129,6 +134,7 @@ const Products = () => {
             ></SearchItem>
           </div>
         </div>
+
         <div className="w-auto flex flex-col">
           <span className="font-semibold text-lg mb-1">Sort by:</span>
           <div className="w-full p-2">
@@ -140,6 +146,7 @@ const Products = () => {
           </div>
         </div>
       </div>
+
       <div className="max-w-[1420px] m-auto mt-8 ">
         <Masonry
           breakpointCols={breakpointColumnsObj}

@@ -4,10 +4,10 @@ import { VoteBar, Button, VoteOption } from "../";
 import { renderStarFromNumber } from "../../ultils/helpers";
 import { useDispatch, useSelector } from "react-redux";
 import { showModal } from "../../store/app/appSlice";
-import { apiRatings } from "../../apis";
+import { apiGetUserOrders, apiRatings } from "../../apis";
 import Swal from "sweetalert2";
 import path from "../../ultils/path";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Comment from "../Vote/Comment";
 
 const ProductInformation = ({
@@ -21,7 +21,24 @@ const ProductInformation = ({
   const [activedTab, setActivedTab] = useState(1);
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state) => state.user);
-
+  const [orders, setOrders] = useState(null);
+  const [params] = useSearchParams();
+  // const q = watch("q");
+  // const status = watch("status");
+  const fetchOrder = async (params) => {
+    const response = await apiGetUserOrders({
+      ...params,
+    });
+    if (response.success) {
+      setOrders(response.orders);
+    }
+  };
+  useEffect(() => {
+    const pr = Object.fromEntries([...params]);
+    fetchOrder(pr);
+  }, [params]);
+  console.log(orders);
+  console.log(orders?.map((item) => item.products));
   const handleSubmitVote = async ({ comment, score }) => {
     if (!comment || !pid || !score) {
       alert("Đánh giá chưa được hoàn thành");
@@ -32,12 +49,18 @@ const ProductInformation = ({
     rerender();
   };
   const handleVoteNow = () => {
+    // if (pid !== orders?.map((item) => item.products?.products)) {
+    //   Swal.fire({
+    //     text: "Bận phải mua sản phẩm để đánh giá",
+    //     title: "Oop!",
+    //   });
+    // } else
     if (!isLoggedIn) {
       Swal.fire({
-        text: "Login to vote",
+        text: "Bạn phải đăng nhập để đánh giá",
         cancelButtonText: "Cancel",
         showCancelButton: true,
-        confirmButtonText: "Go login",
+        confirmButtonText: "Đăng nhập",
         title: "Oop!",
       }).then((rs) => {
         if (rs.isConfirmed) navigate(`/${path.LOGIN}`);

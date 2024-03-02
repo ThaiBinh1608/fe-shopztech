@@ -19,7 +19,7 @@ const AdminSidebar = () => {
     else setActived((prev) => [...prev, tabId]);
   };
   return (
-    <div className=" border-4 h-auto text-sm bg-violet-100 border-violet-700 py-4">
+    <div className=" border-4 h-screen text-sm bg-violet-100 border-violet-700 py-4">
       <div className="flex flex-col items-center justify-center gap-2">
         <Link to={`/${path.HOME}`}>
           <img
