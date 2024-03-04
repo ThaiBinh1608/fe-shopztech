@@ -1,16 +1,27 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { apiGetOrders, apiGetUserOrders, apiUpdateStatusOrders, apideleteOrders } from "../../apis";
-import { Button, CustomSelect, InputForm, Pagination, Select } from "../../components";
+import React, { useCallback, useEffect, useState, PureComponent } from "react";
+import {
+  apiGetOrders,
+  apiGetUserOrders,
+  apiUpdateStatusOrders,
+  apideleteOrders,
+} from "../../apis";
+import {
+  Button,
+  CustomSelect,
+  InputForm,
+  Pagination,
+  Select,
+} from "../../components";
 import { useForm } from "react-hook-form";
 import { createSearchParams, useSearchParams } from "react-router-dom";
 import moment from "moment";
-import { formatmoney } from "../../ultils/helpers";
+import { ConvertDataChart, formatmoney } from "../../ultils/helpers";
 import { statusOrder } from "../../ultils/contants";
 import withBase from "../../hocs/withBase";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import useDebounce from "../../hooks/useDebounce";
-
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 const ManageOrder = ({ navigate, localtion }) => {
   const {
     register,
@@ -37,6 +48,7 @@ const ManageOrder = ({ navigate, localtion }) => {
       setCounts(response.counts);
     }
   };
+
   useEffect(() => {
     const pr = Object.fromEntries([...params]);
     fetchOrder(pr);
@@ -88,32 +100,69 @@ const ManageOrder = ({ navigate, localtion }) => {
       }
     });
   };
+  console.log(orders);
+
+  const dataChart = ConvertDataChart(orders, "pay");
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  const RADIAN = Math.PI / 180;
+  const renderCustomizedLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    percent,
+    index,
+  }) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="white"
+        textAnchor={x > cx ? "start" : "end"}
+        dominantBaseline="central"
+      >
+        {`${(percent * 100).toFixed(0)}%`}
+      </text>
+    );
+  };
+
   return (
     <div className="w-full  px-2">
       <h1 className="h-[75px] flex justify-between items-center text-3xl font-semibold px-2 ">
-        <span>Lịch sử mua hàng</span>
+        <span>Order</span>
       </h1>
-      {/* <div className="w-full px-1 ">
-        <div className="flex w-full items-center pb-2  justify-end ">
-          <form className="w-[50%] grid grid-cols-2 gap-4">
-            <div className="col-span-1">
-              <InputForm
-                id="q"
-                register={register}
-                fullwidth
-                errors={errors}
-                placeholder="Search..."
-              ></InputForm>
-            </div>
-            <CustomSelect
-              options={statusOrder}
-              value={status}
-              onChange={(val) => handleSearchStatus(val)}
-              classname="col-span-1"
-            ></CustomSelect>
-          </form>
-        </div>
-      </div> */}
+      <div className="w-[230px] h-[230px] flex flex-col items-center justify-center">
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart width={400} height={400}>
+            <Pie
+              data={dataChart}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              outerRadius={80}
+              fill="#8884d8"
+              dataKey="value"
+            >
+              {dataChart.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
+        <span className="text-lg font-semibold mb-4">
+          Phương thức thanh toán
+        </span>
+      </div>
+
       <form onSubmit={handleSubmit(handleUpdate)}>
         {editOrder && <Button type="submit">Update</Button>}
         <table className="table-auto mb-6 text-left w-full">

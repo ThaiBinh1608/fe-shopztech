@@ -5,8 +5,7 @@ const Loading = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="text-white text-xl max-sm:text-sm font-semibold pb-10">
-        Quá trình tải dữ liệu sẽ mất chút thời gian, xin vui lòng đợi tải lại
-        trang
+        Quá trình tải dữ liệu sẽ mất chút thời gian, xin vui lòng đợi vài phút
       </div>
       <HashLoader color="violet"></HashLoader>;
     </div>

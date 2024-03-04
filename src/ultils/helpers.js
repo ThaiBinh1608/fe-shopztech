@@ -88,3 +88,27 @@ export const fileToBase64 = (filename, filepath) => {
     render.onerror = (error) => reject(error);
   });
 };
+export const ConvertDataChart = (data, type) => {
+  try {
+    const object = {};
+    Array.isArray(data) &&
+      data.forEach((opt) => {
+        if (!object[opt[type]]) {
+          object[opt[type]] = 1;
+        } else {
+          object[opt[type]]++;
+        }
+      });
+    const rs =
+      Array.isArray(Object.keys(object)) &&
+      Object.keys(object).map((item) => {
+        return {
+          name: item,
+          value: object[item],
+        };
+      });
+    return rs;
+  } catch (e) {
+    return [];
+  }
+};
