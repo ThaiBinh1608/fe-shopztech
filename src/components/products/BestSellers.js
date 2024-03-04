@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { showModal } from "../../store/app/appSlice";
 import Swal from "sweetalert2";
 const tabs = [
-  { id: 1, name: "Bán chạy" },
+  { id: 1, name: "Bán nhiều nhất" },
   { id: 2, name: "sản phẩm mới" },
 ];
 
