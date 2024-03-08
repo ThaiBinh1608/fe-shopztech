@@ -21,9 +21,9 @@ export const renderStarFromNumber = (number, size) => {
   const stars = [];
   number = Math.round(number);
   for (let i = 0; i < +number; i++)
-    stars.push(<AiFillStar color="gold" size={size || 20}></AiFillStar>);
+    stars.push(<AiFillStar color="gold" size={size || 16}></AiFillStar>);
   for (let i = 5; i > +number; i--)
-    stars.push(<AiOutlineStar color="gold" size={size || 20}></AiOutlineStar>);
+    stars.push(<AiOutlineStar color="gold" size={size || 16}></AiOutlineStar>);
   return stars;
 };
 export function secondsToHms(d) {

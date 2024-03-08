@@ -162,8 +162,8 @@ const DetailProduct = ({ navigate, disPath, localtion }) => {
         ></Breadcrumb>
       </div>
       {/* product */}
-      <div className="max-w-[1420px] m-auto mt-4 flex h-full  ">
-        <div className="w-[40%]  flex flex-col  border-4 border-violet-700 rounded-xl">
+      <div className="max-w-[1420px] m-auto mt-4 flex  max-sm:flex-col h-full  ">
+        <div className="w-[40%]  max-sm:w-full  flex flex-col  border-4 border-violet-700 rounded-xl">
           <div className="flex items-center justify-center w-full   ">
             <img
               src={
@@ -201,7 +201,7 @@ const DetailProduct = ({ navigate, disPath, localtion }) => {
             </Slider>
           </div>
         </div>
-        <div className="w-[30%] p-4 flex flex-col gap-4">
+        <div className="w-[30%]  max-sm:w-full p-4 flex flex-col gap-4">
           <div className="flex justify-between items-center">
             <h2 className="text-[30px] font-semibold text-red-500">
               {`${formatmoney(
@@ -292,7 +292,7 @@ const DetailProduct = ({ navigate, disPath, localtion }) => {
             </Button>
           </div>
         </div>
-        <div className="w-[30%]">
+        <div className="w-[30%]  max-sm:w-full">
           {productExtraInfo.map((el) => (
             <ExtraInfor
               key={el.id}

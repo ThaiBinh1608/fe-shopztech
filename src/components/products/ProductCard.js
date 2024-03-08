@@ -27,7 +27,7 @@ const ProductCard = ({
           <span className="line-clamp-1 capitalize ">
             {title?.toLowerCase()}
           </span>
-          <span className="flex h-[16px] ">
+          <span className="flex h-[16px]  max-sm:text-[8px]  ">
             {renderStarFromNumber(totalRatings)?.map((el, index) => (
               <span key={index}>{el}</span>
             ))}
