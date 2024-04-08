@@ -52,7 +52,7 @@ const DetailCart = ({ location, navigate }) => {
   return (
     <div className="w-full">
       <div className="h-[81px] flex flex-col px-4 bg-violet-100">
-        <h3 className="text-[24px] font-semibold ">Cart</h3>
+        <h3 className="text-[24px] font-semibold ">Chi tiết giỏ hàng</h3>
         {/* <Breadcrumb category={location?.pathname}></Breadcrumb> */}
       </div>
       <div className="flex flex-col  border-2 border-black mb-8  ">

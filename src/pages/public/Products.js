@@ -103,6 +103,7 @@ const Products = () => {
           {category !== ":category" ? category : "Products"}
         </h3>
         <Breadcrumb category={category} className=""></Breadcrumb>
+
         <form className="w-full my-2 mx-4  ">
           <InputForm
             id="q"

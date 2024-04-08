@@ -3,11 +3,16 @@ import { NavLink } from "react-router-dom";
 import { createSlug } from "../../ultils/helpers";
 import { useSelector } from "react-redux";
 import clsx from "clsx";
-const Sidebar = ({style}) => {
+const Sidebar = ({ style }) => {
   const { categories } = useSelector((state) => state.app);
 
   return (
-    <div className={clsx("flex text-[16px] text-base font-semibold border-4 border-violet-600 bg-slate-100 rounded-lg",style)}>
+    <div
+      className={clsx(
+        "flex text-[16px] text-base font-semibold border-4 border-violet-600 bg-slate-100 rounded-lg",
+        style
+      )}
+    >
       {categories?.map((el) => (
         <NavLink
           key={createSlug(el.title)}

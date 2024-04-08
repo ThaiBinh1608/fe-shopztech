@@ -6,7 +6,7 @@ const Wishlist = () => {
   const { current } = useSelector((state) => state.user);
 
   return (
-    <div className="w-full  px-2">
+    <div className="w-full  px-2  bg-slate-200">
       <h1 className="h-[75px] flex justify-between items-center text-3xl font-semibold px-2 ">
         <span>Danh sách yêu thích</span>
       </h1>

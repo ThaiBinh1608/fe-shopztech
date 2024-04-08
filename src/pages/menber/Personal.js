@@ -45,11 +45,11 @@ const Personal = () => {
   };
 
   return (
-    <div className="w-full  px-2">
-      <h1 className="h-[75px] flex justify-between items-center text-3xl font-semibold px-2 ">
+    <div className="w-full bg-slate-200">
+      <h1 className="h-[75px] flex text-2xl font-semibold px-2 ">
         <span>Thông tin cá nhân</span>
       </h1>
-      <div className="">
+      <div className=" flex px-2 items-center justify-center border-3">
         <form onSubmit={handleSubmit(handleUpdateInfo)}>
           <InputForm
             label="Họ"

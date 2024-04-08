@@ -12,41 +12,43 @@ import {
 import icons from "../../ultils/icons";
 import { apiGetProducts } from "../../apis";
 import { showModal } from "../../store/app/appSlice";
-
+import Nav from "../../components/navigation/Nav";
 const Home = () => {
   const { newProducts } = useSelector((state) => state.products);
   const { categories } = useSelector((state) => state.app);
   const { MdKeyboardArrowRight } = icons;
 
   return (
-    <div className="  bg-violet-100 px-4 py-10 ">
-      <div className="max-w-[1420px] m-auto pb-8 flex">
-        <Banner></Banner>
-      </div>
+    <div>
+      <Nav></Nav>
+      <div className="  bg-violet-100 px-4 py-10 ">
+        <div className="max-w-[1420px] m-auto pb-8 flex">
+          <Banner></Banner>
+        </div>
 
-      <div className="max-w-[1420px] m-auto flex">
-        <div className="flex flex-col gap-5 w-[35%] max-sm:w-[45%]  border">
-          <Sidebar style="flex-col"></Sidebar>
-          {/* <DealDaily></DealDaily> */}
-        </div>
-        <div className="flex flex-col gap-5 pl-5 w-[65%]   border">
-          <BestSellers></BestSellers>
-        </div>
-      </div>
-      <div className="max-w-[1420px] m-auto my-8">
-        <FeatureProducts></FeatureProducts>
-      </div>
-      <div className="my-8 max-w-[1420px] m-auto">
-        <div className="flex  text-[24px] gap-8 pb-4 mt-4 border-b-4  border-violet-700 font-semibold uppercase">
-          Sản phẩm mới
-        </div>
-        <div className="pt-4  ">
-          <div className="w-full">
-            <CustomSlider products={newProducts}></CustomSlider>
+        <div className="max-w-[1420px] m-auto flex">
+          <div className="flex flex-col gap-5 w-[35%] max-sm:w-[45%]  border">
+            <Sidebar style="flex-col"></Sidebar>
+            {/* <DealDaily></DealDaily> */}
+          </div>
+          <div className="flex flex-col gap-5 pl-5 w-[65%]   border">
+            <BestSellers></BestSellers>
           </div>
         </div>
-      </div>
-      {/* <div className="my-8 max-w-[1420px]  m-auto">
+        <div className="max-w-[1420px] m-auto my-8">
+          <FeatureProducts></FeatureProducts>
+        </div>
+        <div className="my-8 max-w-[1420px] m-auto">
+          <div className="flex  text-[24px] gap-8 pb-4 mt-4 border-b-4  border-violet-700 font-semibold uppercase">
+            Sản phẩm mới
+          </div>
+          <div className="pt-4  ">
+            <div className="w-full">
+              <CustomSlider products={newProducts}></CustomSlider>
+            </div>
+          </div>
+        </div>
+        {/* <div className="my-8 max-w-[1420px]  m-auto">
         <div className="flex text-[24px] gap-8 pb-4 mt-4 border-b-4  border-violet-700 font-semibold uppercase">
           HOT COLLECTIONS
         </div>
@@ -80,11 +82,12 @@ const Home = () => {
           ))}
         </div>
       </div> */}
-      {/* <div className="max-w-[1420px] m-auto my-8 ">
+        {/* <div className="max-w-[1420px] m-auto my-8 ">
         <div className="flex text-[24px] gap-8 pb-4 mt-4 border-b-4  border-violet-700 font-semibold uppercase">
           BLOG POST
         </div>
       </div> */}
+      </div>
     </div>
   );
 };

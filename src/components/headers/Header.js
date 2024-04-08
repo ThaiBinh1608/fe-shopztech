@@ -90,15 +90,36 @@ const Header = () => {
                 >
                   <div className="h-fit  flex flex-col p-2 rounded-b-xl bg-white border-2 border-violet-700 shadow-2xl">
                     <Link
-                      to={`${path.MEMBER}/${path.PERSONAL}`}
+                      to={`/${path.MEMBER}/${path.PERSONAL}`}
                       className="flex hover:text-violet-500 gap-2 items-center justify-between p-2 border-2 "
                     >
-                      <span>Profile</span>
+                      <span>Hồ sơ cá nhân</span>
+                      <BiSolidUserCircle size={18}></BiSolidUserCircle>
+                    </Link>
+                    <Link
+                      to={`/${path.MEMBER}/${path.WISHLIST}`}
+                      className="flex hover:text-violet-500 gap-2 items-center justify-between p-2 border-2 "
+                    >
+                      <span>Danh sách yêu thích</span>
+                      <BiSolidUserCircle size={18}></BiSolidUserCircle>
+                    </Link>
+                    <Link
+                      to={`/${path.MEMBER}/${path.CARTS}`}
+                      className="flex hover:text-violet-500 gap-2 items-center justify-between p-2 border-2 "
+                    >
+                      <span>Giỏ hàng</span>
+                      <BiSolidUserCircle size={18}></BiSolidUserCircle>
+                    </Link>
+                    <Link
+                      to={`/${path.MEMBER}/${path.HISTORY}`}
+                      className="flex hover:text-violet-500 gap-2 items-center justify-between p-2 border-2 "
+                    >
+                      <span>Lịch sử mua hàng</span>
                       <BiSolidUserCircle size={18}></BiSolidUserCircle>
                     </Link>
                     {+current.role === 2001 && (
                       <Link
-                        to={`${path.ADMIN}/${path.DASHBOARD}`}
+                        to={`/${path.ADMIN}/${path.DASHBOARD}`}
                         className="flex hover:text-violet-500 gap-2 items-center justify-between p-2 border-2 "
                       >
                         <span>Admin</span>

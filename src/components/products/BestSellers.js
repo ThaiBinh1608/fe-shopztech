@@ -34,6 +34,13 @@ const BestSellers = () => {
   useEffect(() => {
     fetchProducts();
     dispatch(getNewProducts());
+    // Đặt interval để gửi yêu cầu đến server mỗi 5 giây (5000ms)
+    const intervalId = setInterval(() => {
+      fetchProducts();
+    }, 60000);
+
+    // Hủy interval khi component unmount
+    return () => clearInterval(intervalId);
   }, [dispatch]);
   useEffect(() => {
     if (activedTab === 1) setProducts(bestSellers);
